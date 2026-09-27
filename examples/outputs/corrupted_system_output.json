@@ -1,0 +1,418 @@
+{
+  "consistent": false,
+  "diagnostics": [
+    {
+      "code": "FRAG001",
+      "evidence": {
+        "end": 16000,
+        "id": "r3",
+        "start": 16384
+      },
+      "fragment": "r3",
+      "message": "invalid fragment range [16384, 16000)",
+      "severity": "error"
+    },
+    {
+      "code": "FRAG002",
+      "evidence": {
+        "obj_id": "o2",
+        "owner_id": "p-gone"
+      },
+      "fragment": "o2",
+      "message": "object o2 owned by unknown process p-gone",
+      "severity": "warning"
+    },
+    {
+      "code": "FRAG002",
+      "evidence": {
+        "owner_id": "p-ghost",
+        "region_id": "r0"
+      },
+      "fragment": "r0",
+      "location": "r0",
+      "message": "memory region r0 owned by unknown process p-ghost",
+      "severity": "warning"
+    },
+    {
+      "code": "FRAG003",
+      "evidence": {
+        "overlap": [
+          4096,
+          8192
+        ],
+        "region_a": {
+          "end": 8192,
+          "id": "r0",
+          "start": 0
+        },
+        "region_b": {
+          "end": 12288,
+          "id": "r1",
+          "start": 4096
+        }
+      },
+      "fragment": "r0",
+      "message": "memory regions overlap",
+      "severity": "error"
+    },
+    {
+      "code": "FRAG005",
+      "evidence": {
+        "obj_id": "o1",
+        "refcount": -1
+      },
+      "fragment": "o1",
+      "message": "object o1 has negative refcount -1",
+      "severity": "error"
+    },
+    {
+      "code": "FRAG005",
+      "evidence": {
+        "actual": 1,
+        "obj_id": "o1",
+        "refcount": -1
+      },
+      "fragment": "o1",
+      "message": "object o1 refcount -1 != actual references 1",
+      "severity": "warning"
+    },
+    {
+      "code": "FRAG005",
+      "evidence": {
+        "actual": 2,
+        "obj_id": "o2",
+        "refcount": 3
+      },
+      "fragment": "o2",
+      "message": "object o2 refcount 3 != actual references 2",
+      "severity": "warning"
+    },
+    {
+      "code": "FRAG006",
+      "evidence": {
+        "pid": "p1",
+        "thread_id": "t-missing"
+      },
+      "fragment": "p1",
+      "message": "process p1 claims unknown thread t-missing",
+      "severity": "warning"
+    },
+    {
+      "code": "FRAG006",
+      "evidence": {
+        "parent_pid": "p-nope",
+        "pid": "p2"
+      },
+      "fragment": "p2",
+      "message": "process p2 references unknown parent p-nope",
+      "severity": "warning"
+    },
+    {
+      "code": "FRAG006",
+      "evidence": {
+        "owner_pid": "p-dead",
+        "tid": "t2"
+      },
+      "fragment": "t2",
+      "message": "thread t2 owned by unknown process p-dead",
+      "severity": "error"
+    },
+    {
+      "code": "FRAG007",
+      "evidence": {
+        "capacity": 8,
+        "ep_id": "e1",
+        "message_count": 10
+      },
+      "fragment": "e1",
+      "message": "endpoint e1 over capacity (10 > 8)",
+      "severity": "error"
+    },
+    {
+      "code": "FRAG007",
+      "evidence": {
+        "ep_id": "e1",
+        "message_count": 10,
+        "queue_depth": 5
+      },
+      "fragment": "e1",
+      "message": "endpoint e1 queue_depth 5 != message_count 10",
+      "severity": "warning"
+    },
+    {
+      "code": "FRAG007",
+      "evidence": {
+        "ep_id": "e2",
+        "owner_id": "p-absent"
+      },
+      "fragment": "e2",
+      "message": "endpoint e2 owned by unknown process p-absent",
+      "severity": "warning"
+    },
+    {
+      "code": "FRAG007",
+      "evidence": {
+        "ep_id": "e2",
+        "message_count": 3,
+        "queue_depth": 2
+      },
+      "fragment": "e2",
+      "message": "endpoint e2 queue_depth 2 != message_count 3",
+      "severity": "warning"
+    },
+    {
+      "code": "FRAG007",
+      "evidence": {
+        "ep_id": "e-phantom",
+        "pid": "p1"
+      },
+      "fragment": "p1",
+      "location": "p1",
+      "message": "process p1 claims unknown ipc endpoint e-phantom",
+      "severity": "warning"
+    },
+    {
+      "code": "FRAG008",
+      "evidence": {
+        "owner_id": "p-vanish",
+        "res_id": "f2"
+      },
+      "fragment": "f2",
+      "message": "resource f2 owned by unknown process p-vanish",
+      "severity": "warning"
+    },
+    {
+      "code": "FRAG008",
+      "evidence": {
+        "pid": "p1",
+        "resource_id": "f-ghost"
+      },
+      "fragment": "p1",
+      "location": "p1",
+      "message": "process p1 claims unknown resource f-ghost",
+      "severity": "warning"
+    },
+    {
+      "code": "FRAG009",
+      "evidence": {
+        "ep_id": "e2"
+      },
+      "fragment": "e2",
+      "message": "duplicate endpoint id e2",
+      "severity": "error"
+    },
+    {
+      "code": "FRAG009",
+      "evidence": {
+        "res_id": "f1"
+      },
+      "fragment": "f1",
+      "message": "duplicate resource id f1",
+      "severity": "error"
+    },
+    {
+      "code": "FRAG009",
+      "evidence": {
+        "obj_id": "o1"
+      },
+      "fragment": "o1",
+      "message": "duplicate object id o1",
+      "severity": "error"
+    },
+    {
+      "code": "FRAG009",
+      "evidence": {
+        "pid": "p1"
+      },
+      "fragment": "p1",
+      "message": "duplicate pid p1",
+      "severity": "error"
+    },
+    {
+      "code": "FRAG009",
+      "evidence": {
+        "id": "r0"
+      },
+      "fragment": "r0",
+      "message": "duplicate region id r0",
+      "severity": "error"
+    }
+  ],
+  "fragments": [
+    {
+      "summary": {
+        "average_free": 8192.0,
+        "external_fragmentation": 0.5,
+        "free": 16384,
+        "free_fragments": 2,
+        "largest_free": 8192,
+        "regions": [
+          {
+            "end": 8192,
+            "id": "r0",
+            "kind": "private",
+            "owner_id": "p1",
+            "perms": [
+              "read",
+              "write"
+            ],
+            "start": 0,
+            "state": "allocated"
+          },
+          {
+            "end": 12288,
+            "id": "r1",
+            "kind": "private",
+            "owner_id": null,
+            "perms": [
+              "read"
+            ],
+            "start": 4096,
+            "state": "free"
+          },
+          {
+            "end": 16384,
+            "id": "r0",
+            "kind": "private",
+            "owner_id": "p-ghost",
+            "perms": [
+              "read"
+            ],
+            "start": 12288,
+            "state": "allocated"
+          },
+          {
+            "end": 24576,
+            "id": "r4",
+            "kind": "shared",
+            "owner_id": "p2",
+            "perms": [
+              "read",
+              "write"
+            ],
+            "start": 20480,
+            "state": "allocated"
+          },
+          {
+            "end": 32768,
+            "id": "r5",
+            "kind": "private",
+            "owner_id": null,
+            "perms": [
+              "read"
+            ],
+            "start": 24576,
+            "state": "free"
+          }
+        ],
+        "smallest_free": 8192,
+        "total": 32768,
+        "used": 16384
+      },
+      "type": "memory"
+    },
+    {
+      "summary": {
+        "by_state": {
+          "blocked": 1,
+          "running": 1,
+          "zombie": 1
+        },
+        "process_count": 3,
+        "relationships": [
+          {
+            "kind": "process->thread",
+            "source": "p1",
+            "target": "t1"
+          },
+          {
+            "kind": "process->thread",
+            "source": "p-dead",
+            "target": "t2"
+          }
+        ],
+        "thread_count": 2
+      },
+      "type": "processes"
+    },
+    {
+      "summary": {
+        "by_type": {
+          "event": 1,
+          "mutex": 1,
+          "semaphore": 1
+        },
+        "object_count": 3
+      },
+      "type": "objects"
+    },
+    {
+      "summary": {
+        "endpoint_count": 3,
+        "message_count": 13,
+        "queue_utilization": 0.8125
+      },
+      "type": "ipc"
+    },
+    {
+      "summary": {
+        "by_type": {
+          "file": 1,
+          "pipe": 1,
+          "socket": 1
+        },
+        "resource_count": 3
+      },
+      "type": "resources"
+    }
+  ],
+  "metadata": {
+    "modules": [
+      "ipc",
+      "memory",
+      "objects",
+      "processes",
+      "resources"
+    ]
+  },
+  "snapshot_id": "corrupted-system",
+  "statistics": {
+    "ipc": {
+      "endpoint_count": 3,
+      "message_count": 13,
+      "queue_utilization": 0.8125
+    },
+    "memory": {
+      "fragment_count": 2,
+      "free": 16384,
+      "largest_fragment": 8192,
+      "total": 32768,
+      "used": 16384
+    },
+    "objects": {
+      "by_type": {
+        "event": 1,
+        "mutex": 1,
+        "semaphore": 1
+      },
+      "object_count": 3
+    },
+    "processes": {
+      "by_state": {
+        "blocked": 1,
+        "running": 1,
+        "zombie": 1
+      },
+      "process_count": 3,
+      "thread_count": 2
+    },
+    "resources": {
+      "by_type": {
+        "file": 1,
+        "pipe": 1,
+        "socket": 1
+      },
+      "resource_count": 3
+    }
+  }
+}

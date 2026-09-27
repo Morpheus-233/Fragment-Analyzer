@@ -1,0 +1,36 @@
+{
+  "snapshot_id": "corrupted-system",
+  "memory_regions": [
+    {"id": "r0", "start": 0,    "end": 8192,  "state": "allocated", "kind": "private", "perms": ["read", "write"], "owner_id": "p1"},
+    {"id": "r1", "start": 4096, "end": 12288, "state": "free",      "kind": "private", "perms": ["read"], "owner_id": null},
+    {"id": "r0", "start": 12288,"end": 16384, "state": "allocated", "kind": "private", "perms": ["read"], "owner_id": "p-ghost"},
+    {"id": "r3", "start": 16384,"end": 16000, "state": "free",      "kind": "private", "perms": ["read"], "owner_id": null},
+    {"id": "r4", "start": 20480,"end": 24576, "state": "allocated", "kind": "shared",  "perms": ["read", "write"], "owner_id": "p2"},
+    {"id": "r5", "start": 24576,"end": 32768, "state": "free",      "kind": "private", "perms": ["read"], "owner_id": null}
+  ],
+  "processes": [
+    {"pid": "p1", "state": "running",  "parent_pid": "0",       "thread_ids": ["t1", "t-missing"], "address_space_id": "as1", "resource_ids": ["f1", "f-ghost"], "ipc_endpoint_ids": ["e1", "e-phantom"], "priority": 10},
+    {"pid": "p2", "state": "zombie",   "parent_pid": "p-nope",  "thread_ids": ["t2"],              "address_space_id": "as2", "resource_ids": [],                "ipc_endpoint_ids": [],                  "priority": 5},
+    {"pid": "p1", "state": "blocked",  "parent_pid": "0",       "thread_ids": [],                  "address_space_id": "as3", "resource_ids": [],                "ipc_endpoint_ids": [],                  "priority": 1}
+  ],
+  "threads": [
+    {"tid": "t1", "owner_pid": "p1",     "state": "running", "priority": 10},
+    {"tid": "t2", "owner_pid": "p-dead", "state": "blocked", "priority": 5}
+  ],
+  "kernel_objects": [
+    {"obj_id": "o1", "obj_type": "mutex",     "owner_id": "p1",     "refcount": -1, "references": ["p1"],       "state": "locked"},
+    {"obj_id": "o2", "obj_type": "semaphore", "owner_id": "p-gone", "refcount": 3,  "references": ["p1", "p2"], "state": "signaled"},
+    {"obj_id": "o1", "obj_type": "event",     "owner_id": "p2",     "refcount": 0,  "references": [],           "state": "set"}
+  ],
+  "ipc_endpoints": [
+    {"ep_id": "e1", "owner_id": "p1",       "queue_depth": 5,  "message_count": 10, "capacity": 8,  "state": "open"},
+    {"ep_id": "e2", "owner_id": "p-absent", "queue_depth": 2,  "message_count": 3,  "capacity": 4,  "state": "open"},
+    {"ep_id": "e2", "owner_id": "p2",       "queue_depth": 0,  "message_count": 0,  "capacity": 4,  "state": "closed"}
+  ],
+  "resources": [
+    {"res_id": "f1", "res_type": "file",   "owner_id": "p1",       "state": "open"},
+    {"res_id": "f2", "res_type": "socket", "owner_id": "p-vanish", "state": "open"},
+    {"res_id": "f1", "res_type": "pipe",   "owner_id": "p2",       "state": "open"}
+  ],
+  "metadata": {"version": 2, "description": "Deliberately corrupted snapshot — triggers all diagnostic categories"}
+}

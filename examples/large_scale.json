@@ -1,0 +1,61 @@
+{
+  "snapshot_id": "large-scale-system",
+  "memory_regions": [
+    {"id": "r00", "start": 0,      "end": 16384,  "state": "allocated", "kind": "private", "perms": ["read", "write", "execute"], "owner_id": "p1"},
+    {"id": "r01", "start": 16384,  "end": 32768,  "state": "allocated", "kind": "private", "perms": ["read", "write"],            "owner_id": "p1"},
+    {"id": "r02", "start": 32768,  "end": 49152,  "state": "free",      "kind": "private", "perms": ["read"],                     "owner_id": null},
+    {"id": "r03", "start": 49152,  "end": 65536,  "state": "allocated", "kind": "shared",  "perms": ["read", "write"],            "owner_id": "p2"},
+    {"id": "r04", "start": 65536,  "end": 81920,  "state": "allocated", "kind": "private", "perms": ["read", "write", "execute"], "owner_id": "p2"},
+    {"id": "r05", "start": 81920,  "end": 98304,  "state": "free",      "kind": "private", "perms": ["read"],                     "owner_id": null},
+    {"id": "r06", "start": 98304,  "end": 114688, "state": "allocated", "kind": "private", "perms": ["read", "write"],            "owner_id": "p3"},
+    {"id": "r07", "start": 114688, "end": 131072, "state": "reserved",  "kind": "private", "perms": ["read"],                     "owner_id": null},
+    {"id": "r08", "start": 131072, "end": 163840, "state": "allocated", "kind": "shared",  "perms": ["read"],                     "owner_id": "p4"},
+    {"id": "r09", "start": 163840, "end": 196608, "state": "free",      "kind": "private", "perms": ["read"],                     "owner_id": null},
+    {"id": "r10", "start": 196608, "end": 229376, "state": "allocated", "kind": "private", "perms": ["read", "write"],            "owner_id": "p5"},
+    {"id": "r11", "start": 229376, "end": 262144, "state": "free",      "kind": "private", "perms": ["read"],                     "owner_id": null}
+  ],
+  "processes": [
+    {"pid": "p1", "state": "running",  "parent_pid": "0",  "thread_ids": ["t1", "t2"],      "address_space_id": "as1", "resource_ids": ["f1", "f2"],       "ipc_endpoint_ids": ["e1"],       "priority": 10},
+    {"pid": "p2", "state": "running",  "parent_pid": "p1", "thread_ids": ["t3", "t4"],      "address_space_id": "as2", "resource_ids": ["f3"],             "ipc_endpoint_ids": ["e2"],       "priority": 8},
+    {"pid": "p3", "state": "sleeping", "parent_pid": "p1", "thread_ids": ["t5", "t6"],      "address_space_id": "as3", "resource_ids": ["f4"],             "ipc_endpoint_ids": ["e3"],       "priority": 5},
+    {"pid": "p4", "state": "blocked",  "parent_pid": "p2", "thread_ids": ["t7", "t8"],      "address_space_id": "as4", "resource_ids": ["f5", "f6"],       "ipc_endpoint_ids": ["e4"],       "priority": 3},
+    {"pid": "p5", "state": "ready",    "parent_pid": "p1", "thread_ids": ["t9", "t10"],     "address_space_id": "as5", "resource_ids": ["f7"],             "ipc_endpoint_ids": ["e5"],       "priority": 6}
+  ],
+  "threads": [
+    {"tid": "t1",  "owner_pid": "p1", "state": "running",  "priority": 10},
+    {"tid": "t2",  "owner_pid": "p1", "state": "blocked",  "priority": 8},
+    {"tid": "t3",  "owner_pid": "p2", "state": "running",  "priority": 8},
+    {"tid": "t4",  "owner_pid": "p2", "state": "ready",    "priority": 7},
+    {"tid": "t5",  "owner_pid": "p3", "state": "sleeping", "priority": 5},
+    {"tid": "t6",  "owner_pid": "p3", "state": "sleeping", "priority": 5},
+    {"tid": "t7",  "owner_pid": "p4", "state": "blocked",  "priority": 3},
+    {"tid": "t8",  "owner_pid": "p4", "state": "blocked",  "priority": 3},
+    {"tid": "t9",  "owner_pid": "p5", "state": "ready",    "priority": 6},
+    {"tid": "t10", "owner_pid": "p5", "state": "running",  "priority": 6}
+  ],
+  "kernel_objects": [
+    {"obj_id": "o1", "obj_type": "mutex",     "owner_id": "p1", "refcount": 2, "references": ["p1", "p2"],       "state": "locked"},
+    {"obj_id": "o2", "obj_type": "semaphore", "owner_id": "p2", "refcount": 3, "references": ["p2", "p3", "p4"], "state": "signaled"},
+    {"obj_id": "o3", "obj_type": "event",     "owner_id": "p1", "refcount": 5, "references": ["p1", "p2", "p3", "p4", "p5"], "state": "set"},
+    {"obj_id": "o4", "obj_type": "timer",     "owner_id": "p3", "refcount": 1, "references": ["p3"],             "state": "armed"},
+    {"obj_id": "o5", "obj_type": "mutex",     "owner_id": "p4", "refcount": 2, "references": ["p4", "p5"],       "state": "unlocked"},
+    {"obj_id": "o6", "obj_type": "condvar",   "owner_id": "p5", "refcount": 1, "references": ["p5"],             "state": "waiting"}
+  ],
+  "ipc_endpoints": [
+    {"ep_id": "e1", "owner_id": "p1", "queue_depth": 4,  "message_count": 4,  "capacity": 16, "state": "open"},
+    {"ep_id": "e2", "owner_id": "p2", "queue_depth": 2,  "message_count": 2,  "capacity": 8,  "state": "open"},
+    {"ep_id": "e3", "owner_id": "p3", "queue_depth": 0,  "message_count": 0,  "capacity": 4,  "state": "open"},
+    {"ep_id": "e4", "owner_id": "p4", "queue_depth": 7,  "message_count": 7,  "capacity": 16, "state": "open"},
+    {"ep_id": "e5", "owner_id": "p5", "queue_depth": 1,  "message_count": 1,  "capacity": 8,  "state": "open"}
+  ],
+  "resources": [
+    {"res_id": "f1", "res_type": "file",      "owner_id": "p1", "state": "open"},
+    {"res_id": "f2", "res_type": "socket",    "owner_id": "p1", "state": "open"},
+    {"res_id": "f3", "res_type": "pipe",      "owner_id": "p2", "state": "open"},
+    {"res_id": "f4", "res_type": "device",    "owner_id": "p3", "state": "open"},
+    {"res_id": "f5", "res_type": "file",      "owner_id": "p4", "state": "open"},
+    {"res_id": "f6", "res_type": "shm",       "owner_id": "p4", "state": "open"},
+    {"res_id": "f7", "res_type": "semaphore", "owner_id": "p5", "state": "open"}
+  ],
+  "metadata": {"version": 2, "description": "Large-scale system with 5 processes, 10 threads, 6 kernel objects, and 7 resources"}
+}

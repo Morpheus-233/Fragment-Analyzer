@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "os5-micro"
+version = "0.1.0"
+description = "OS5 Micro — Fragment Analyzer"
+requires-python = ">=3.10"
+
+[project.scripts]
+os5 = "os5.fragment.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+

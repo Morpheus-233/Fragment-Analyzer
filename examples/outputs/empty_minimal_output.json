@@ -1,0 +1,88 @@
+{
+  "consistent": true,
+  "diagnostics": [],
+  "fragments": [
+    {
+      "summary": {
+        "average_free": 0,
+        "external_fragmentation": 0.0,
+        "free": 0,
+        "free_fragments": 0,
+        "largest_free": 0,
+        "regions": [],
+        "smallest_free": 0,
+        "total": 0,
+        "used": 0
+      },
+      "type": "memory"
+    },
+    {
+      "summary": {
+        "by_state": {},
+        "process_count": 0,
+        "relationships": [],
+        "thread_count": 0
+      },
+      "type": "processes"
+    },
+    {
+      "summary": {
+        "by_type": {},
+        "object_count": 0
+      },
+      "type": "objects"
+    },
+    {
+      "summary": {
+        "endpoint_count": 0,
+        "message_count": 0,
+        "queue_utilization": 0.0
+      },
+      "type": "ipc"
+    },
+    {
+      "summary": {
+        "by_type": {},
+        "resource_count": 0
+      },
+      "type": "resources"
+    }
+  ],
+  "metadata": {
+    "modules": [
+      "ipc",
+      "memory",
+      "objects",
+      "processes",
+      "resources"
+    ]
+  },
+  "snapshot_id": "empty-minimal",
+  "statistics": {
+    "ipc": {
+      "endpoint_count": 0,
+      "message_count": 0,
+      "queue_utilization": 0.0
+    },
+    "memory": {
+      "fragment_count": 0,
+      "free": 0,
+      "largest_fragment": 0,
+      "total": 0,
+      "used": 0
+    },
+    "objects": {
+      "by_type": {},
+      "object_count": 0
+    },
+    "processes": {
+      "by_state": {},
+      "process_count": 0,
+      "thread_count": 0
+    },
+    "resources": {
+      "by_type": {},
+      "resource_count": 0
+    }
+  }
+}

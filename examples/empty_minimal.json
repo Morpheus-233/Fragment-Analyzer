@@ -1,0 +1,10 @@
+{
+  "snapshot_id": "empty-minimal",
+  "memory_regions": [],
+  "processes": [],
+  "threads": [],
+  "kernel_objects": [],
+  "ipc_endpoints": [],
+  "resources": [],
+  "metadata": {"version": 1, "description": "Empty system — no entities at all"}
+}

@@ -1,0 +1,43 @@
+{
+  "snapshot_id": "high-fragmentation",
+  "memory_regions": [
+    {"id": "r00", "start": 0,     "end": 1024,  "state": "allocated", "kind": "private", "perms": ["read", "write"], "owner_id": "p1"},
+    {"id": "r01", "start": 1024,  "end": 1536,  "state": "free",      "kind": "private", "perms": ["read"], "owner_id": null},
+    {"id": "r02", "start": 1536,  "end": 3072,  "state": "allocated", "kind": "private", "perms": ["read", "write"], "owner_id": "p1"},
+    {"id": "r03", "start": 3072,  "end": 3328,  "state": "free",      "kind": "private", "perms": ["read"], "owner_id": null},
+    {"id": "r04", "start": 3328,  "end": 4096,  "state": "allocated", "kind": "shared",  "perms": ["read"], "owner_id": "p2"},
+    {"id": "r05", "start": 4096,  "end": 4352,  "state": "free",      "kind": "private", "perms": ["read"], "owner_id": null},
+    {"id": "r06", "start": 4352,  "end": 6144,  "state": "allocated", "kind": "private", "perms": ["read", "write", "execute"], "owner_id": "p1"},
+    {"id": "r07", "start": 6144,  "end": 6400,  "state": "free",      "kind": "private", "perms": ["read"], "owner_id": null},
+    {"id": "r08", "start": 6400,  "end": 8192,  "state": "allocated", "kind": "private", "perms": ["read", "write"], "owner_id": "p2"},
+    {"id": "r09", "start": 8192,  "end": 8704,  "state": "free",      "kind": "private", "perms": ["read"], "owner_id": null},
+    {"id": "r10", "start": 8704,  "end": 10240, "state": "allocated", "kind": "private", "perms": ["read", "write"], "owner_id": "p1"},
+    {"id": "r11", "start": 10240, "end": 10496, "state": "free",      "kind": "private", "perms": ["read"], "owner_id": null},
+    {"id": "r12", "start": 10496, "end": 12288, "state": "allocated", "kind": "shared",  "perms": ["read"], "owner_id": "p2"},
+    {"id": "r13", "start": 12288, "end": 12800, "state": "free",      "kind": "private", "perms": ["read"], "owner_id": null},
+    {"id": "r14", "start": 12800, "end": 16384, "state": "allocated", "kind": "private", "perms": ["read", "write"], "owner_id": "p1"},
+    {"id": "r15", "start": 16384, "end": 32768, "state": "free",      "kind": "private", "perms": ["read"], "owner_id": null}
+  ],
+  "processes": [
+    {"pid": "p1", "state": "running", "parent_pid": "0",  "thread_ids": ["t1", "t2"], "address_space_id": "as1", "resource_ids": ["f1"], "ipc_endpoint_ids": ["e1"], "priority": 10},
+    {"pid": "p2", "state": "running", "parent_pid": "p1", "thread_ids": ["t3"],       "address_space_id": "as2", "resource_ids": ["f2"], "ipc_endpoint_ids": ["e2"], "priority": 5}
+  ],
+  "threads": [
+    {"tid": "t1", "owner_pid": "p1", "state": "running", "priority": 10},
+    {"tid": "t2", "owner_pid": "p1", "state": "ready",   "priority": 8},
+    {"tid": "t3", "owner_pid": "p2", "state": "running", "priority": 5}
+  ],
+  "kernel_objects": [
+    {"obj_id": "o1", "obj_type": "mutex",     "owner_id": "p1", "refcount": 1, "references": ["p1"], "state": "locked"},
+    {"obj_id": "o2", "obj_type": "semaphore", "owner_id": "p2", "refcount": 1, "references": ["p2"], "state": "signaled"}
+  ],
+  "ipc_endpoints": [
+    {"ep_id": "e1", "owner_id": "p1", "queue_depth": 6, "message_count": 6, "capacity": 16, "state": "open"},
+    {"ep_id": "e2", "owner_id": "p2", "queue_depth": 0, "message_count": 0, "capacity": 8,  "state": "open"}
+  ],
+  "resources": [
+    {"res_id": "f1", "res_type": "file",   "owner_id": "p1", "state": "open"},
+    {"res_id": "f2", "res_type": "socket", "owner_id": "p2", "state": "open"}
+  ],
+  "metadata": {"version": 2, "description": "Heavily fragmented memory — 8 tiny free gaps plus one large free block"}
+}

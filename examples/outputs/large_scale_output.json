@@ -1,0 +1,316 @@
+{
+  "consistent": true,
+  "diagnostics": [],
+  "fragments": [
+    {
+      "summary": {
+        "average_free": 24576.0,
+        "external_fragmentation": 0.6666666666666667,
+        "free": 98304,
+        "free_fragments": 4,
+        "largest_free": 32768,
+        "regions": [
+          {
+            "end": 16384,
+            "id": "r00",
+            "kind": "private",
+            "owner_id": "p1",
+            "perms": [
+              "read",
+              "write",
+              "execute"
+            ],
+            "start": 0,
+            "state": "allocated"
+          },
+          {
+            "end": 32768,
+            "id": "r01",
+            "kind": "private",
+            "owner_id": "p1",
+            "perms": [
+              "read",
+              "write"
+            ],
+            "start": 16384,
+            "state": "allocated"
+          },
+          {
+            "end": 49152,
+            "id": "r02",
+            "kind": "private",
+            "owner_id": null,
+            "perms": [
+              "read"
+            ],
+            "start": 32768,
+            "state": "free"
+          },
+          {
+            "end": 65536,
+            "id": "r03",
+            "kind": "shared",
+            "owner_id": "p2",
+            "perms": [
+              "read",
+              "write"
+            ],
+            "start": 49152,
+            "state": "allocated"
+          },
+          {
+            "end": 81920,
+            "id": "r04",
+            "kind": "private",
+            "owner_id": "p2",
+            "perms": [
+              "read",
+              "write",
+              "execute"
+            ],
+            "start": 65536,
+            "state": "allocated"
+          },
+          {
+            "end": 98304,
+            "id": "r05",
+            "kind": "private",
+            "owner_id": null,
+            "perms": [
+              "read"
+            ],
+            "start": 81920,
+            "state": "free"
+          },
+          {
+            "end": 114688,
+            "id": "r06",
+            "kind": "private",
+            "owner_id": "p3",
+            "perms": [
+              "read",
+              "write"
+            ],
+            "start": 98304,
+            "state": "allocated"
+          },
+          {
+            "end": 131072,
+            "id": "r07",
+            "kind": "private",
+            "owner_id": null,
+            "perms": [
+              "read"
+            ],
+            "start": 114688,
+            "state": "reserved"
+          },
+          {
+            "end": 163840,
+            "id": "r08",
+            "kind": "shared",
+            "owner_id": "p4",
+            "perms": [
+              "read"
+            ],
+            "start": 131072,
+            "state": "allocated"
+          },
+          {
+            "end": 196608,
+            "id": "r09",
+            "kind": "private",
+            "owner_id": null,
+            "perms": [
+              "read"
+            ],
+            "start": 163840,
+            "state": "free"
+          },
+          {
+            "end": 229376,
+            "id": "r10",
+            "kind": "private",
+            "owner_id": "p5",
+            "perms": [
+              "read",
+              "write"
+            ],
+            "start": 196608,
+            "state": "allocated"
+          },
+          {
+            "end": 262144,
+            "id": "r11",
+            "kind": "private",
+            "owner_id": null,
+            "perms": [
+              "read"
+            ],
+            "start": 229376,
+            "state": "free"
+          }
+        ],
+        "smallest_free": 16384,
+        "total": 262144,
+        "used": 147456
+      },
+      "type": "memory"
+    },
+    {
+      "summary": {
+        "by_state": {
+          "blocked": 1,
+          "ready": 1,
+          "running": 2,
+          "sleeping": 1
+        },
+        "process_count": 5,
+        "relationships": [
+          {
+            "kind": "process->thread",
+            "source": "p1",
+            "target": "t1"
+          },
+          {
+            "kind": "process->thread",
+            "source": "p1",
+            "target": "t2"
+          },
+          {
+            "kind": "process->thread",
+            "source": "p2",
+            "target": "t3"
+          },
+          {
+            "kind": "process->thread",
+            "source": "p2",
+            "target": "t4"
+          },
+          {
+            "kind": "process->thread",
+            "source": "p3",
+            "target": "t5"
+          },
+          {
+            "kind": "process->thread",
+            "source": "p3",
+            "target": "t6"
+          },
+          {
+            "kind": "process->thread",
+            "source": "p4",
+            "target": "t7"
+          },
+          {
+            "kind": "process->thread",
+            "source": "p4",
+            "target": "t8"
+          },
+          {
+            "kind": "process->thread",
+            "source": "p5",
+            "target": "t9"
+          },
+          {
+            "kind": "process->thread",
+            "source": "p5",
+            "target": "t10"
+          }
+        ],
+        "thread_count": 10
+      },
+      "type": "processes"
+    },
+    {
+      "summary": {
+        "by_type": {
+          "condvar": 1,
+          "event": 1,
+          "mutex": 2,
+          "semaphore": 1,
+          "timer": 1
+        },
+        "object_count": 6
+      },
+      "type": "objects"
+    },
+    {
+      "summary": {
+        "endpoint_count": 5,
+        "message_count": 14,
+        "queue_utilization": 0.2692307692307692
+      },
+      "type": "ipc"
+    },
+    {
+      "summary": {
+        "by_type": {
+          "device": 1,
+          "file": 2,
+          "pipe": 1,
+          "semaphore": 1,
+          "shm": 1,
+          "socket": 1
+        },
+        "resource_count": 7
+      },
+      "type": "resources"
+    }
+  ],
+  "metadata": {
+    "modules": [
+      "ipc",
+      "memory",
+      "objects",
+      "processes",
+      "resources"
+    ]
+  },
+  "snapshot_id": "large-scale-system",
+  "statistics": {
+    "ipc": {
+      "endpoint_count": 5,
+      "message_count": 14,
+      "queue_utilization": 0.2692307692307692
+    },
+    "memory": {
+      "fragment_count": 4,
+      "free": 98304,
+      "largest_fragment": 32768,
+      "total": 262144,
+      "used": 147456
+    },
+    "objects": {
+      "by_type": {
+        "condvar": 1,
+        "event": 1,
+        "mutex": 2,
+        "semaphore": 1,
+        "timer": 1
+      },
+      "object_count": 6
+    },
+    "processes": {
+      "by_state": {
+        "blocked": 1,
+        "ready": 1,
+        "running": 2,
+        "sleeping": 1
+      },
+      "process_count": 5,
+      "thread_count": 10
+    },
+    "resources": {
+      "by_type": {
+        "device": 1,
+        "file": 2,
+        "pipe": 1,
+        "semaphore": 1,
+        "shm": 1,
+        "socket": 1
+      },
+      "resource_count": 7
+    }
+  }
+}
