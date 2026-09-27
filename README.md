@@ -1,6 +1,6 @@
- — Fragment Analyzer
+Fragment Analyzer
 
-A **read-only diagnostic analyzer** for OS5 microkernel runtime state. Feed it a JSON snapshot describing memory layout, processes, threads, kernel objects, IPC channels, and resources — it reports fragmentation metrics, consistency violations, and structural anomalies.
+A **read-only diagnostic analyzer** for  microkernel runtime state. Feed it a JSON snapshot describing memory layout, processes, threads, kernel objects, IPC channels, and resources — it reports fragmentation metrics, consistency violations, and structural anomalies.
 
 ## Quick Start
 
