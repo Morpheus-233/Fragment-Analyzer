@@ -6,7 +6,7 @@
 - The analyzer is **read-only**. It exposes `inspect / analyze / validate /
   report / dump / statistics` only. There are no `kill / free / delete /
   modify / mount / unmount / reconfigure / reset` operations.
-- The analyzer analyzes **OS5 snapshot state** (explicitly supplied JSON:
+- The analyzer analyzes **snapshot state** (explicitly supplied JSON:
   `snapshot_id, memory_regions, processes, threads, kernel_objects,
   ipc_endpoints, resources, metadata`). Synthetic example:
   `examples/snapshot.json`.
@@ -18,10 +18,10 @@
 - The analyzer does **not** require administrator / root / sudo privileges.
 - The analyzer does **not** access arbitrary host memory (no raw pointer
   following; snapshot IDs/handles only) or physical disks.
-- The analyzer does **not** send OS5 data externally: no network access,
+- The analyzer does **not** send  data externally: no network access,
   fully local and deterministic (`analyze(snapshot)` is a pure function of
   its input; no timestamps/randomness/host env in output).
-- Temporary files, if any, live project-local (e.g. `OS5_REPO/.tmp/`) and
+- Temporary files, if any, live project-local (e.g. `REPO/.tmp/`) and
   cleanup removes only analyzer-created files.
 
 ## Repository architecture note (spec section 63)
